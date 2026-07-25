@@ -1,0 +1,86 @@
+﻿init -2 python:
+
+#     # The color of non-interactive text.
+#     custom_text = "#545454"
+
+#     # Colors for buttons in various states.
+#     custom_idle = "#42637b"
+#     custom_hover = "#d86b45"
+#     custom_disable = "#808080"
+
+#     # Colors for reversed text buttons (selected list entries).
+#     custom_reverse_idle = "#78a5c5"
+#     reverse_hover = "#d86b45"
+#     custom_reverse_text = "#ffffff"
+
+#     # Colors for the scrollbar thumb.
+#     custom_scrollbar_idle = "#dfdfdf"
+#     custom_scrollbar_hover = "#d86b45"
+
+#     # An image used as a separator pattern.
+#     custom_pattern = "images/pattern.png"
+
+#     # A displayable used for the background of everything.
+#     custom_background = "theme/theme_background.jpg"
+
+#     # A displayable used for the background of the projects list.
+#     custom_projects_window = Color("#C4A578") #Null()
+
+#     # A displayable used the background of information boxes.
+#     custom_info_window = "#f9f9f9c0"
+
+#     # Colors for the titles of information boxes.
+#     custom_error_color = "#d15353"
+#     custom_info_color = "#545454"
+#     custom_interaction_color = "#d19753"
+#     custom_question_color = "#d19753"
+
+#     # The color of input text.
+#     custom_input_color = "#d86b45"
+
+#     # A displayable used for the background of windows
+#     # containing commands, preferences, and navigation info.
+
+#     # custom_window = Frame(Fixed(Solid(custom_reverse_idle, xsize=4, xalign=0), Solid(custom_info_window, xsize=794, xalign=1.0), xsize=800, ysize=600), 0, 0, tile=True)
+#     custom_window = Color("#C4A578") #Null()
+
+    # El color del texto no interactivo (cambiado a gris claro para legibilidad).
+    custom_text = "#cccccc"
+
+    # Colores para botones en varios estados (ajustados con tonos más suaves y visibles en oscuro).
+    custom_idle = "#5c82a6"
+    custom_hover = "#ff8b5d"
+    custom_disable = "#666666"
+
+    # Colores para botones de texto invertidos (entradas de listas seleccionadas).
+    custom_reverse_idle = "#3d5a73"
+    reverse_hover = "#ff8b5d"
+    custom_reverse_text = "#ffffff"
+
+    # Colores para el thumb de la barra de desplazamiento.
+    custom_scrollbar_idle = "#4a4a4a"
+    custom_scrollbar_hover = "#ff8b5d"
+
+    # Una imagen utilizada como patrón de separación (se sugiere una versión oscura si la usas).
+    custom_pattern = "images/pattern_dark.png"
+
+    # Un displayable usado para el fondo de todo (se recomienda una imagen de fondo oscura).
+    custom_background = "theme/theme_background.jpg"
+
+    # Un displayable usado para el fondo de la lista de proyectos (cambiado a un tono oscuro sólido).
+    custom_projects_window = Color("#1e1e1e") #Null()
+
+    # Un displayable usado para el fondo de las cajas de información (oscuro con transparencia alpha).
+    custom_info_window = "#1e1e1ec0"
+
+    # Colores para los títulos de las cajas de información (con mayor brillo para destacar en oscuro).
+    custom_error_color = "#ff6b6b"
+    custom_info_color = "#cccccc"
+    custom_interaction_color = "#f2b361"
+    custom_question_color = "#f2b361"
+
+    # El color del texto de entrada.
+    custom_input_color = "#ff8b5d"
+
+    # Un displayable usado para el fondo de las ventanas de comandos, preferencias y navegación.
+    custom_window = Color("#252525") #Null()
