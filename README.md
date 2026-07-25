@@ -1,34 +1,68 @@
 # Ren'Py Launcher Personalizado
 
-Launcher modificado de **Ren'Py 8.5.3 SDK** con interfaz oscura, animaciones personalizadas y organización mejorada de proyectos.
+Launcher modificado de **Ren'Py 8.5.3 SDK** con sistema de temas múltiples, fondos animados, organización mejorada de proyectos y más.
 
 ## Características
 
-- **Tema oscuro personalizado** con paleta de colores azul eléctrico / naranja
+- **Sistema de temas múltiples** con registro extensible (`register_theme`)
+- **Temas incluidos**: Default (claro), Dark (oscuro), DMike (cálido/sobrio)
+- **Skin legacy** desde `skin.rpy` / `skin.txt` con compatibilidad hacia atrás
 - **Fondo animado** con bucle de sprites (21 frames) en la pantalla principal
 - **Organización por carpetas** de proyectos con soporte colapsable
 - **Gestión completa de proyectos**: crear, editar, lint, compilar, distribuir
 - **Soporte multiplataforma**: Windows, macOS, Linux, Android, iOS, Web
 - **Editor integrado** con detección automática de VS Code
-- **Sistema de skins** intercambiable (default / dark / custom)
+- **Text outlines** como efecto visual opcional (Preferencias > Theme)
 
 ## Estructura del proyecto
 
-| Carpeta/Archivo           | Descripción                                      |
-| ------------------------- | ------------------------------------------------ |
-| `game/`                   | Código fuente del launcher en Ren'Py             |
-| `game/front_page.rpy`     | Pantalla principal y selección de proyectos      |
-| `game/project.rpy`        | Gestión de proyectos y organización por carpetas |
-| `game/skin.rpy`           | Tema personalizado con fondo animado             |
-| `game/skin.txt`           | Definición del skin oscuro                       |
-| `game/style.rpy`          | Sistema de estilos (default, dark, custom)       |
-| `game/interface.rpy`      | Diálogos y UI comunes                            |
-| `game/editor.rpy`         | Detección y configuración del editor             |
-| `game/distribute.rpy`     | Sistema de builds y distribuciones               |
-| `game/images/transition/` | Sprites del fondo animado (chekoanim)            |
-| `game/fonts/`             | Tipografías Roboto                               |
-| `game/gui7/`              | Generación de GUI para nuevos proyectos          |
-| `game/theme/`             | Assets visuales del tema                         |
+| Carpeta/Archivo                | Descripción                                      |
+| ------------------------------ | ------------------------------------------------ |
+| `game/`                        | Código fuente del launcher en Ren'Py             |
+| `game/launcher_themes.rpy`     | Registro de temas múltiples (`register_theme`)   |
+| `game/skin.rpy`                | Tema custom legacy con fondo animado (chekoanim) |
+| `game/skin.txt`                | Definición del skin legacy                       |
+| `game/style.rpy`               | Sistema de estilos y resolución de temas         |
+| `game/front_page.rpy`          | Pantalla principal y selección de proyectos      |
+| `game/project.rpy`             | Gestión de proyectos y organización por carpetas |
+| `game/interface.rpy`           | Diálogos y UI comunes                            |
+| `game/editor.rpy`              | Detección y configuración del editor             |
+| `game/distribute.rpy`          | Sistema de builds y distribuciones               |
+| `game/preferences.rpy`         | Preferencias (temas, opciones, efectos visuales) |
+| `game/images/transition/`      | Sprites del fondo animado (chekoanim)            |
+| `game/fonts/`                  | Tipografías Roboto                               |
+| `game/gui7/`                   | Generación de GUI para nuevos proyectos          |
+| `game/theme/`                  | Assets visuales del tema                         |
+
+## Cómo agregar un tema nuevo
+
+Crea un archivo `.rpy` con:
+
+```python
+init -2 python:
+    register_theme("id_unico", "Nombre del Tema",
+        text="#color",
+        idle="#color",
+        hover="#color",
+        disable="#color",
+        reverse_idle="#color",
+        reverse_hover="#color",
+        reverse_text="#color",
+        scrollbar_idle="#color",
+        scrollbar_hover="#color",
+        pattern="images/pattern.png",
+        info_window="#color",
+        projects_window=Color("#color"),
+        error_color="#color",
+        info_color="#color",
+        interaction_color="#color",
+        question_color="#color",
+        input_color="#color",
+        window=Color("#color"),
+    )
+```
+
+El tema aparecerá automáticamente en Preferencias > Theme.
 
 ## Requisitos
 
