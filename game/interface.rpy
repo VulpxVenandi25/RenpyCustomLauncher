@@ -120,25 +120,25 @@ screen bottom_info:
 
                 hbox:
                     spacing INDENT
-                    textbutton _("Documentation") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_link" action interface.OpenDocumentation()
+                    textbutton _("Documentation") text_outlines TEXT_OUTLINES style "l_link" action interface.OpenDocumentation()
 
                     if not interface.NO_LAUNCHER_LINKS:
-                        textbutton _("Ren'Py Website") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_link" action OpenURL(interface.RENPY_URL)
+                        textbutton _("Ren'Py Website") text_outlines TEXT_OUTLINES style "l_link" action OpenURL(interface.RENPY_URL)
 
-                    textbutton _("[interface.version]") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_link" action Jump("about")
+                    textbutton _("[interface.version]") text_outlines TEXT_OUTLINES style "l_link" action Jump("about")
 
                 hbox:
                     spacing INDENT
                     xalign 1.0
 
                     if ability.can_update:
-                        textbutton _("update") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Jump("update") style "l_link":
+                        textbutton _("update") text_outlines TEXT_OUTLINES action Jump("update") style "l_link":
                             if persistent.has_update:
                                 text_color "#F96854"
                                 text_hover_color Color("#F96854").tint(.8)
 
-                    textbutton _("preferences") id "pref_btn" text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_link" action Jump("preferences")
-                    textbutton _("quit") id "quit_btn" text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_link" action Quit(confirm=False)
+                    textbutton _("preferences") id "pref_btn" text_outlines TEXT_OUTLINES style "l_link" action Jump("preferences")
+                    textbutton _("quit") id "quit_btn" text_outlines TEXT_OUTLINES style "l_link" action Quit(confirm=False)
 
             if persistent.sponsor_message and not interface.NO_LAUNCHER_LINKS:
 

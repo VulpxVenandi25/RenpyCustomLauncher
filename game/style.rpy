@@ -79,6 +79,11 @@ init -1 python:
 
     config.defer_styles = True
 
+    if persistent.text_outlines:
+        TEXT_OUTLINES = [(absolute(1), "#000000", absolute(1), absolute(1))]
+    else:
+        TEXT_OUTLINES = []
+
     _cur_theme_id = persistent.theme
     _cur_theme = THEMES.get(_cur_theme_id) if _cur_theme_id else None
 

@@ -19,6 +19,7 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+default persistent.text_outlines = False
 default persistent.show_edit_funcs = True
 default persistent.use_console = False
 default persistent.lint_options = set()
@@ -115,7 +116,7 @@ screen preferences():
 
             has vbox
 
-            label _("Launcher Preferences") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+            label _("Launcher Preferences") text_outlines TEXT_OUTLINES
 
             add HALF_SPACER
 
@@ -133,7 +134,7 @@ screen preferences():
                     add HALF_SPACER
 
                     for i, l in preference_tabs:
-                        textbutton l id f"pref_{i}_btn" text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action SetVariable("preference_tab", i) style "l_list"
+                        textbutton l id f"pref_{i}_btn" text_outlines TEXT_OUTLINES action SetVariable("preference_tab", i) style "l_list"
 
                 if preference_tab == "general":
 
@@ -152,7 +153,7 @@ screen preferences():
 
                             has vbox
 
-                            text _("Projects Directory:") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                            text _("Projects Directory:") outlines TEXT_OUTLINES
 
                             add HALF_SPACER
 
@@ -160,12 +161,12 @@ screen preferences():
                             frame style "l_indent":
                                 if persistent.projects_directory:
                                     textbutton _("[persistent.projects_directory!q]"):
-                                        text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                        text_outlines TEXT_OUTLINES
                                         action Jump("projects_directory_preference")
                                         alt _("Projects directory: [text]")
                                 else:
                                     textbutton _("Not Set"):
-                                        text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                        text_outlines TEXT_OUTLINES
                                         action Jump("projects_directory_preference")
                                         alt _("Projects directory: [text]")
 
@@ -178,12 +179,12 @@ screen preferences():
                             style "l_indent"
                             has vbox
 
-                            text _("Text Editor:") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                            text _("Text Editor:") outlines TEXT_OUTLINES
 
                             add HALF_SPACER
 
                             frame style "l_indent":
-                                textbutton (persistent.editor or _("Not Set")) action Jump("editor_preference") alt _("Text editor: [text]") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                textbutton (persistent.editor or _("Not Set")) action Jump("editor_preference") alt _("Text editor: [text]") text_outlines TEXT_OUTLINES
 
                         add SPACER
 
@@ -193,7 +194,7 @@ screen preferences():
                             style "l_indent"
                             has vbox
 
-                            text _("Language:") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                            text _("Language:") outlines TEXT_OUTLINES
 
                             add HALF_SPACER
 
@@ -204,7 +205,7 @@ screen preferences():
                                             textbutton tlname:
                                                 id f"pref_change_language_btn_{tlid}"
                                                 xmaximum (TWOTHIRDS//3)
-                                                text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                                text_outlines TEXT_OUTLINES
                                                 action [Language(tlid), project.SelectTutorial(True)]
                                                 style "l_list"
 
@@ -222,12 +223,12 @@ screen preferences():
                             style "l_indent"
                             has vbox
 
-                            text _("Navigation Options:") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                            text _("Navigation Options:") outlines TEXT_OUTLINES
 
                             add HALF_SPACER
 
-                            textbutton _("Include private names") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_checkbox" action ToggleField(persistent, "navigate_private")
-                            textbutton _("Include library names") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_checkbox" action ToggleField(persistent, "navigate_library")
+                            textbutton _("Include private names") text_outlines TEXT_OUTLINES style "l_checkbox" action ToggleField(persistent, "navigate_private")
+                            textbutton _("Include library names") text_outlines TEXT_OUTLINES style "l_checkbox" action ToggleField(persistent, "navigate_library")
 
                         add SPACER
                         add SEPARATOR2
@@ -236,14 +237,14 @@ screen preferences():
                             style "l_indent"
                             has vbox
 
-                            text _("Game Options:") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                            text _("Game Options:") outlines TEXT_OUTLINES
 
                             add HALF_SPACER
 
                             if renpy.windows or renpy.macintosh:
-                                textbutton _("Console output") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_checkbox" action ToggleField(persistent, "use_console")
+                                textbutton _("Console output") text_outlines TEXT_OUTLINES style "l_checkbox" action ToggleField(persistent, "use_console")
 
-                            textbutton _("Skip splashscreen") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_checkbox" action ToggleField(persistent, "skip_splashscreen")
+                            textbutton _("Skip splashscreen") text_outlines TEXT_OUTLINES style "l_checkbox" action ToggleField(persistent, "skip_splashscreen")
 
                         add SPACER
                         add SEPARATOR2
@@ -252,24 +253,24 @@ screen preferences():
                             style "l_indent"
                             has vbox
 
-                            text _("Launcher Options:") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                            text _("Launcher Options:") outlines TEXT_OUTLINES
 
                             add HALF_SPACER
 
-                            textbutton _("Show edit file section") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_checkbox" action ToggleField(persistent, "show_edit_funcs")
-                            textbutton _("Show tutorial projects") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_checkbox" action ToggleField(persistent, "show_tutorial_projects")
-                            textbutton _("Large fonts") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_checkbox" action [ ToggleField(persistent, "large_print"), renpy.utter_restart ]
+                            textbutton _("Show edit file section") text_outlines TEXT_OUTLINES style "l_checkbox" action ToggleField(persistent, "show_edit_funcs")
+                            textbutton _("Show tutorial projects") text_outlines TEXT_OUTLINES style "l_checkbox" action ToggleField(persistent, "show_tutorial_projects")
+                            textbutton _("Large fonts") text_outlines TEXT_OUTLINES style "l_checkbox" action [ ToggleField(persistent, "large_print"), renpy.utter_restart ]
 
                             if interface.local_doc_exists:
-                                textbutton _("Prefer the web documentation") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_checkbox" action ToggleField(persistent, "use_web_doc")
+                                textbutton _("Prefer the web documentation") text_outlines TEXT_OUTLINES style "l_checkbox" action ToggleField(persistent, "use_web_doc")
 
-                            textbutton _("Sponsor message") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_checkbox" action ToggleField(persistent, "sponsor_message")
+                            textbutton _("Sponsor message") text_outlines TEXT_OUTLINES style "l_checkbox" action ToggleField(persistent, "sponsor_message")
 
-                            textbutton _("Restore window position") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_checkbox" action Preference("restore window position", "toggle")
+                            textbutton _("Restore window position") text_outlines TEXT_OUTLINES style "l_checkbox" action Preference("restore window position", "toggle")
 
                             if ability.can_update:
-                                textbutton _("Daily check for update") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_checkbox" action [ToggleField(persistent, "daily_update_check"), SetField(persistent, "last_update_check", None)] selected persistent.daily_update_check
-                                textbutton _("Prefer RPU updates") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_checkbox" action ToggleField(persistent, "prefer_rpu")
+                                textbutton _("Daily check for update") text_outlines TEXT_OUTLINES style "l_checkbox" action [ToggleField(persistent, "daily_update_check"), SetField(persistent, "last_update_check", None)] selected persistent.daily_update_check
+                                textbutton _("Prefer RPU updates") text_outlines TEXT_OUTLINES style "l_checkbox" action ToggleField(persistent, "prefer_rpu")
 
                 elif preference_tab == "theme":
 
@@ -286,22 +287,33 @@ screen preferences():
                             style "l_indent"
                             has vbox
 
-                            text _("Launcher Theme:") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                            text _("Launcher Theme:") outlines TEXT_OUTLINES
 
                             add HALF_SPACER
 
                             for tid in THEME_ORDER:
                                 $ tname = THEME_NAMES.get(tid, tid)
-                                textbutton tname id "pref_theme_[tid]_btn" text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_checkbox" action [SetField(persistent, "theme", tid if tid != "default" else None), RestartAtPreferences()]
+                                textbutton tname id "pref_theme_[tid]_btn" text_outlines TEXT_OUTLINES style "l_checkbox" action [SetField(persistent, "theme", tid if tid != "default" else None), RestartAtPreferences()]
+                            
+                            add SPACER
 
-                            if persistent.theme == "custom" or "custom" not in THEMES:
-                                textbutton _("Custom (legacy)") id "pref_theme_custom_btn" text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_checkbox" action [SetField(persistent, "theme", "custom"), RestartAtPreferences()]
+                            add SEPARATOR2
+
+                            frame:
+                                style "l_indent"
+                                has vbox
+
+                                text _("Efectos secundarios para el launcher:") outlines TEXT_OUTLINES
+
+                                add HALF_SPACER
+
+                                textbutton _("Text outlines") text_outlines TEXT_OUTLINES style "l_checkbox" action [ ToggleField(persistent, "text_outlines"), renpy.utter_restart ]
 
                             add SPACER
 
                             $ skins_url = interface.get_doc_url("skins.html")
 
-                            text _("Information about creating a custom theme can be found {a=[skins_url]}in the Ren'Py Documentation{/a}.") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                            text _("Information about creating a custom theme can be found {a=[skins_url]}in the Ren'Py Documentation{/a}.") outlines TEXT_OUTLINES
 
                 elif preference_tab == "install":
 
@@ -318,7 +330,7 @@ screen preferences():
                             style "l_indent"
                             has vbox
 
-                            text _("Install Libraries:") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                            text _("Install Libraries:") outlines TEXT_OUTLINES
 
                             add HALF_SPACER
 
@@ -339,13 +351,13 @@ screen preferences():
                             style "l_indent"
                             has vbox
 
-                            text _("Actions:") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                            text _("Actions:") outlines TEXT_OUTLINES
 
                             add HALF_SPACER
 
-                            textbutton _("Open launcher project") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_nonbox" action [ project.Select("launcher"), Jump("front_page") ]
+                            textbutton _("Open launcher project") text_outlines TEXT_OUTLINES style "l_nonbox" action [ project.Select("launcher"), Jump("front_page") ]
                             textbutton _("Open projects.txt"):
-                                text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                text_outlines TEXT_OUTLINES
                                 style "l_nonbox"
                                 if project.manager.projects_directory:
                                     action [
@@ -353,8 +365,8 @@ screen preferences():
                                         editor.EditAbsolute(os.path.join(project.manager.projects_directory, "projects.txt"))
                                     ]
 
-                            textbutton _("Reset window size") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_nonbox" action Preference("display", 1.0)
-                            textbutton _("Clean temporary files") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_nonbox" action Jump("clean_tmp")
+                            textbutton _("Reset window size") text_outlines TEXT_OUTLINES style "l_nonbox" action Preference("display", 1.0)
+                            textbutton _("Clean temporary files") text_outlines TEXT_OUTLINES style "l_nonbox" action Jump("clean_tmp")
 
                 elif preference_tab == "lint":
 
@@ -371,33 +383,33 @@ screen preferences():
                             style "l_indent"
                             has vbox
 
-                            text _("Lint toggles:") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                            text _("Lint toggles:") outlines TEXT_OUTLINES
 
                             add HALF_SPACER
 
                             textbutton _("Check for orphan/obsolete translations"):
-                                text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                text_outlines TEXT_OUTLINES
                                 style "l_checkbox"
                                 action InvertSelected(ToggleSetMembership(persistent.lint_options, "--no-orphan-tl"))
                             textbutton _("Check parameters shadowing reserved names"):
-                                text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                text_outlines TEXT_OUTLINES
                                 style "l_checkbox"
                                 action ToggleSetMembership(persistent.lint_options, "--reserved-parameters")
                             textbutton _("Print block, word, and character counts by speaking character."):
-                                text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                text_outlines TEXT_OUTLINES
                                 style "l_checkbox"
                                 action ToggleSetMembership(persistent.lint_options, "--by-character")
                             textbutton _("Unclosed text tags"):
-                                text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                text_outlines TEXT_OUTLINES
                                 style "l_checkbox"
                                 action ToggleSetMembership(persistent.lint_options, "--check-unclosed-tags")
                             textbutton _("Show all unreachable blocks and orphaned translations."):
-                                text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                text_outlines TEXT_OUTLINES
                                 style "l_checkbox"
                                 action ToggleSetMembership(persistent.lint_options, "--all-problems")
 
 
-    textbutton _("Return") id "return_btn" action Jump("front_page") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_left_button"
+    textbutton _("Return") id "return_btn" action Jump("front_page") text_outlines TEXT_OUTLINES style "l_left_button"
 
 label clean_tmp:
     python hide:

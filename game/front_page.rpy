@@ -55,10 +55,10 @@ screen front_page:
                     has hbox:
                         xfill True
 
-                    text _("PROJECTS:") outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_label_text" size 36 yoffset 10
+                    text _("PROJECTS:") outlines TEXT_OUTLINES style "l_label_text" size 36 yoffset 10
 
                     textbutton _("refresh"):
-                        text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                        text_outlines TEXT_OUTLINES
                         xalign 1.0
                         yalign 1.0
                         yoffset 5
@@ -86,7 +86,7 @@ screen front_page:
                         xfill True
 
                         textbutton _("+ Create New Project"):
-                            text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                            text_outlines TEXT_OUTLINES
                             left_margin (HALF_INDENT)
                             action Jump("new_project")
 
@@ -96,7 +96,7 @@ screen front_page:
             use front_page_project
 
     if project.current is not None:
-        textbutton _("Launch Project") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action project.Launch() style "l_right_button"
+        textbutton _("Launch Project") text_outlines TEXT_OUTLINES action project.Launch() style "l_right_button"
         key "K_F5" action project.Launch()
 
 
@@ -113,7 +113,7 @@ screen front_page_project_list:
             for p in projects:
 
                 textbutton ("[p.display_name]" if p.display_name else "[p.name!q]"):
-                    text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                    text_outlines TEXT_OUTLINES
                     action project.Select(p)
                     alt _("Select project [text].")
                     style "l_list"
@@ -124,7 +124,7 @@ screen front_page_project_list:
             for pf in folders:
 
                 textbutton "[pf.name.capitalize()]":
-                    text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                    text_outlines TEXT_OUTLINES
                     action project.CollapseFolder(pf)
                     alt _("Open folder [text].")
                     selected_alt _("Close folder [text].")
@@ -133,7 +133,7 @@ screen front_page_project_list:
                 if not pf.hidden:
                     for p in pf.projects:
                         textbutton _(f"[p.display_name]" if p.display_name else "[p.name!q]"):
-                            text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                            text_outlines TEXT_OUTLINES
                             action project.Select(p)
                             alt _("Select project [text].")
                             style "l_list"
@@ -144,14 +144,14 @@ screen front_page_project_list:
 
             if folders:
                 textbutton _("Tutorials"):
-                    text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                    text_outlines TEXT_OUTLINES
                     action ToggleDict(persistent.collapsed_folders, "Tutorials")
                     alt _("Select folder [text].")
                     style "l_folder"
 
             if (not folders) or (not persistent.collapsed_folders["Tutorials"]):
-                textbutton _("Tutorial") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action project.SelectTutorial() style "l_list" alt _("Select project [text].")
-                textbutton _("The Question") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action project.Select("the_question") style "l_list" alt _("Select project [text].")
+                textbutton _("Tutorial") text_outlines TEXT_OUTLINES action project.SelectTutorial() style "l_list" alt _("Select project [text].")
+                textbutton _("The Question") text_outlines TEXT_OUTLINES action project.Select("the_question") style "l_list" alt _("Select project [text].")
 
 
 # This is used for the right side of the screen, which is where the project-specific
@@ -167,8 +167,8 @@ screen front_page_project:
 
         frame style "l_label":
             has hbox xfill True
-            text "[p.display_name!q]" outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_label_text"
-            label _("Active Project") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_alternate"
+            text "[p.display_name!q]" outlines TEXT_OUTLINES style "l_label_text"
+            label _("Active Project") text_outlines TEXT_OUTLINES style "l_alternate"
 
         grid 2 1:
             xfill True
@@ -176,34 +176,34 @@ screen front_page_project:
 
             vbox:
 
-                label _("Open Directory") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_label_small"
+                label _("Open Directory") text_outlines TEXT_OUTLINES style "l_label_small"
 
                 frame style "l_indent":
                     has grid 2 max(5, (len(p.get_renpy_launcher()["open_directory"]) + 1) // 2):
                         transpose True xfill True
 
                     for button_name, path in p.get_renpy_launcher()["open_directory"].items():
-                        textbutton button_name text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action OpenDirectory(os.path.join(p.path, path), absolute=True)
+                        textbutton button_name text_outlines TEXT_OUTLINES action OpenDirectory(os.path.join(p.path, path), absolute=True)
 
             vbox:
                 if persistent.show_edit_funcs:
 
-                    label _("Edit File") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_label_small"
+                    label _("Edit File") text_outlines TEXT_OUTLINES style "l_label_small"
 
                     frame style "l_indent":
                         has vbox
 
                         for button_name, path in p.get_renpy_launcher()["edit_file"].items():
-                            textbutton button_name text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action editor.Edit(path, check=True)
+                            textbutton button_name text_outlines TEXT_OUTLINES action editor.Edit(path, check=True)
 
                         if editor.CanEditProject():
-                            textbutton _("Open project") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action editor.EditProject()
+                            textbutton _("Open project") text_outlines TEXT_OUTLINES action editor.EditProject()
                         else:
-                            textbutton _("All script files") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action editor.EditAll()
+                            textbutton _("All script files") text_outlines TEXT_OUTLINES action editor.EditAll()
 
         add SPACER
 
-        label _("Actions") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_label_small"
+        label _("Actions") text_outlines TEXT_OUTLINES style "l_label_small"
 
         grid 2 1:
             xfill True
@@ -212,19 +212,19 @@ screen front_page_project:
             frame style "l_indent":
                 has vbox
 
-                textbutton _("Navigate Script") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Jump("navigation")
-                textbutton _("Check Script (Lint)") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Call("lint")
+                textbutton _("Navigate Script") text_outlines TEXT_OUTLINES action Jump("navigation")
+                textbutton _("Check Script (Lint)") text_outlines TEXT_OUTLINES action Call("lint")
 
                 if p.dump.get("test", {}).get("has_default_testcase", False):
-                    textbutton _("Run Testcases") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Jump("run_testcases")
+                    textbutton _("Run Testcases") text_outlines TEXT_OUTLINES action Jump("run_testcases")
 
                 if p.exists("game/gui.rpy"):
-                    textbutton _("Change/Update GUI") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Jump("change_gui")
+                    textbutton _("Change/Update GUI") text_outlines TEXT_OUTLINES action Jump("change_gui")
                 else:
-                    textbutton _("Change Theme") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Jump("choose_theme")
+                    textbutton _("Change Theme") text_outlines TEXT_OUTLINES action Jump("choose_theme")
 
-                textbutton _("Delete Persistent") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Jump("rmpersistent")
-                textbutton _("Force Recompile") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Jump("force_recompile")
+                textbutton _("Delete Persistent") text_outlines TEXT_OUTLINES action Jump("rmpersistent")
+                textbutton _("Force Recompile") text_outlines TEXT_OUTLINES action Jump("force_recompile")
 
                 # textbutton "Relaunch" action Relaunch
 
@@ -232,13 +232,13 @@ screen front_page_project:
                 has vbox
 
                 if ability.can_distribute:
-                    textbutton _("Build Distributions") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Jump("build_distributions")
+                    textbutton _("Build Distributions") text_outlines TEXT_OUTLINES action Jump("build_distributions")
 
-                textbutton _("Android") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Jump("android")
-                textbutton _("iOS") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Jump("ios")
-                textbutton _("Web") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Jump("web")
-                textbutton _("Generate Translations") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Jump("translate")
-                textbutton _("Extract Dialogue") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Jump("extract_dialogue")
+                textbutton _("Android") text_outlines TEXT_OUTLINES action Jump("android")
+                textbutton _("iOS") text_outlines TEXT_OUTLINES action Jump("ios")
+                textbutton _("Web") text_outlines TEXT_OUTLINES action Jump("web")
+                textbutton _("Generate Translations") text_outlines TEXT_OUTLINES action Jump("translate")
+                textbutton _("Extract Dialogue") text_outlines TEXT_OUTLINES action Jump("extract_dialogue")
 
 label main_menu:
     return

@@ -102,7 +102,7 @@ screen update_channel(channels):
 
             has vbox
 
-            label _("Select Update Channel") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+            label _("Select Update Channel") text_outlines TEXT_OUTLINES
 
             add HALF_SPACER
 
@@ -113,7 +113,7 @@ screen update_channel(channels):
 
                     has vbox
 
-                    text _("The update channel controls the version of Ren'Py the updater will download.") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                    text _("The update channel controls the version of Ren'Py the updater will download.") outlines TEXT_OUTLINES
 
                     for c in channels:
 
@@ -138,7 +138,7 @@ screen update_channel(channels):
 
                         hbox:
                             spacing 7
-                            textbutton c["channel"] text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action action
+                            textbutton c["channel"] text_outlines TEXT_OUTLINES action action
 
                         add HALF_SPACER
 
@@ -205,10 +205,10 @@ screen updater:
         label _("Ren'Py Update") style "l_info_label"
 
     if u.can_cancel:
-        textbutton _("Cancel") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action u.cancel style "l_left_button"
+        textbutton _("Cancel") text_outlines TEXT_OUTLINES action u.cancel style "l_left_button"
 
     if u.can_proceed:
-        textbutton _("Proceed") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action u.proceed style "l_right_button"
+        textbutton _("Proceed") text_outlines TEXT_OUTLINES action u.proceed style "l_right_button"
 
 
 

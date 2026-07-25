@@ -499,7 +499,7 @@ screen web():
 
             has vbox
 
-            label _("Web: [project.current.display_name!q]") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+            label _("Web: [project.current.display_name!q]") text_outlines TEXT_OUTLINES
 
             add HALF_SPACER
 
@@ -521,7 +521,7 @@ screen web():
                         style "l_indent"
                         has vbox
 
-                        text _("Build:") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                        text _("Build:") outlines TEXT_OUTLINES
 
                         add HALF_SPACER
 
@@ -529,14 +529,14 @@ screen web():
 
                             has vbox
 
-                            textbutton _("Build Web Application") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Jump("web_build")
-                            textbutton _("Build and Open in Browser") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Jump("web_launch")
-                            textbutton _("Open in Browser") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Jump("web_start")
-                            textbutton _("Open build directory") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Jump("open_build_directory")
+                            textbutton _("Build Web Application") text_outlines TEXT_OUTLINES action Jump("web_build")
+                            textbutton _("Build and Open in Browser") text_outlines TEXT_OUTLINES action Jump("web_launch")
+                            textbutton _("Open in Browser") text_outlines TEXT_OUTLINES action Jump("web_start")
+                            textbutton _("Open build directory") text_outlines TEXT_OUTLINES action Jump("open_build_directory")
 
                             add SPACER
 
-                            textbutton _("Force Recompile") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action DataToggle("force_recompile") style "l_checkbox"
+                            textbutton _("Force Recompile") text_outlines TEXT_OUTLINES action DataToggle("force_recompile") style "l_checkbox"
 
 
                 # Right side.
@@ -554,10 +554,10 @@ screen web():
                         style "l_indent"
                         has vbox
 
-                        text _("Images and music can be downloaded while playing. A 'progressive_download.txt' file will be created so you can configure this behavior.") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                        text _("Images and music can be downloaded while playing. A 'progressive_download.txt' file will be created so you can configure this behavior.") outlines TEXT_OUTLINES
 
 
-    textbutton _("Return") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Jump("front_page") style "l_left_button"
+    textbutton _("Return") text_outlines TEXT_OUTLINES action Jump("front_page") style "l_left_button"
 
 label web:
 

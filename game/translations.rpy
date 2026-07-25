@@ -88,7 +88,7 @@ screen translate:
 
             has vbox
 
-            label _("Translations: [project.current.display_name!q]") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+            label _("Translations: [project.current.display_name!q]") text_outlines TEXT_OUTLINES
 
             add HALF_SPACER
 
@@ -106,7 +106,7 @@ screen translate:
                         style "l_indent"
                         has vbox
 
-                        text _("Language:") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                        text _("Language:") outlines TEXT_OUTLINES
 
                         add HALF_SPACER
 
@@ -129,7 +129,7 @@ screen translate:
                         style "l_indent"
                         has vbox
 
-                        text _("The language to work with. This should only contain lower-case ASCII characters and underscores.") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                        text _("The language to work with. This should only contain lower-case ASCII characters and underscores.") outlines TEXT_OUTLINES
 
             add SPACER
 
@@ -150,13 +150,13 @@ screen translate:
                         has vbox
 
                         textbutton _("Generate Translations"):
-                            text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                            text_outlines TEXT_OUTLINES
                             text_size 24
                             action [ CheckLanguage(), Jump("generate_translations") ]
 
                         add HALF_SPACER
 
-                        textbutton _("Generate empty strings for translations") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_checkbox" action ToggleField(persistent, "generate_empty_strings")
+                        textbutton _("Generate empty strings for translations") text_outlines TEXT_OUTLINES style "l_checkbox" action ToggleField(persistent, "generate_empty_strings")
 
 
                 frame:
@@ -174,7 +174,7 @@ screen translate:
 
                         has vbox
 
-                        text _("Generates or updates translation files. The files will be placed in game/tl/[persistent.translate_language!q].") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                        text _("Generates or updates translation files. The files will be placed in game/tl/[persistent.translate_language!q].") outlines TEXT_OUTLINES
 
             add SPACER
 
@@ -195,21 +195,21 @@ screen translate:
                         has vbox
 
                         textbutton _("Extract String Translations"):
-                            text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                            text_outlines TEXT_OUTLINES
                             action [ CheckLanguage(), Jump("extract_strings") ]
                         textbutton _("Merge String Translations"):
-                            text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                            text_outlines TEXT_OUTLINES
                             action [ CheckLanguage(), Jump("merge_strings") ]
 
                         add HALF_SPACER
 
-                        textbutton _("Replace existing translations") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_checkbox" action ToggleField(persistent, "replace_translations")
-                        textbutton _("Reverse languages") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] style "l_checkbox" action ToggleField(persistent, "reverse_languages")
+                        textbutton _("Replace existing translations") text_outlines TEXT_OUTLINES style "l_checkbox" action ToggleField(persistent, "replace_translations")
+                        textbutton _("Reverse languages") text_outlines TEXT_OUTLINES style "l_checkbox" action ToggleField(persistent, "reverse_languages")
 
                         add HALF_SPACER
 
                         textbutton _("Update Default Interface Translations"):
-                            text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                            text_outlines TEXT_OUTLINES
                             action [ Jump("update_renpy_strings") ]
 
 
@@ -229,9 +229,9 @@ screen translate:
 
                         has vbox
 
-                        text _("The extract command allows you to extract string translations from an existing project into a temporary file.\n\nThe merge command merges extracted translations into another project.") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                        text _("The extract command allows you to extract string translations from an existing project into a temporary file.\n\nThe merge command merges extracted translations into another project.") outlines TEXT_OUTLINES
 
-    textbutton _("Return") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Jump("front_page") style "l_left_button"
+    textbutton _("Return") text_outlines TEXT_OUTLINES action Jump("front_page") style "l_left_button"
 
 
 label translate:
@@ -343,7 +343,7 @@ screen extract_dialogue:
 
             has vbox
 
-            label _("Extract Dialogue: [project.current.display_name!q]") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+            label _("Extract Dialogue: [project.current.display_name!q]") text_outlines TEXT_OUTLINES
 
             add HALF_SPACER
 
@@ -359,7 +359,7 @@ screen extract_dialogue:
                     style "l_indent"
                     has vbox
 
-                    text _("Format:") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                    text _("Format:") outlines TEXT_OUTLINES
 
                     add HALF_SPACER
 
@@ -367,8 +367,8 @@ screen extract_dialogue:
                         style "l_indent"
                         has vbox
 
-                        textbutton _("Tab-delimited Spreadsheet (dialogue.tab)") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action SetField(persistent, "dialogue_format", "tab")
-                        textbutton _("Dialogue Text Only (dialogue.txt)") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action SetField(persistent, "dialogue_format", "txt")
+                        textbutton _("Tab-delimited Spreadsheet (dialogue.tab)") text_outlines TEXT_OUTLINES action SetField(persistent, "dialogue_format", "tab")
+                        textbutton _("Dialogue Text Only (dialogue.txt)") text_outlines TEXT_OUTLINES action SetField(persistent, "dialogue_format", "txt")
 
                 add SPACER
                 add SEPARATOR2
@@ -377,13 +377,13 @@ screen extract_dialogue:
                     style "l_indent"
                     has vbox
 
-                    text _("Options:") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                    text _("Options:") outlines TEXT_OUTLINES
 
                     add HALF_SPACER
 
-                    textbutton _("Strip text tags from the dialogue.") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action ToggleField(persistent, "dialogue_notags") style "l_checkbox"
-                    textbutton _("Escape quotes and other special characters.") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action ToggleField(persistent, "dialogue_escape") style "l_checkbox"
-                    textbutton _("Extract all translatable strings, not just dialogue.") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action ToggleField(persistent, "dialogue_strings") style "l_checkbox"
+                    textbutton _("Strip text tags from the dialogue.") text_outlines TEXT_OUTLINES action ToggleField(persistent, "dialogue_notags") style "l_checkbox"
+                    textbutton _("Escape quotes and other special characters.") text_outlines TEXT_OUTLINES action ToggleField(persistent, "dialogue_escape") style "l_checkbox"
+                    textbutton _("Extract all translatable strings, not just dialogue.") text_outlines TEXT_OUTLINES action ToggleField(persistent, "dialogue_strings") style "l_checkbox"
 
                 add SPACER
                 add SEPARATOR2
@@ -392,7 +392,7 @@ screen extract_dialogue:
                     style "l_indent"
                     has vbox
 
-                    text _("Language (or None for the default language):") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                    text _("Language (or None for the default language):") outlines TEXT_OUTLINES
 
                     input style "l_default":
                         value FieldInputValue(persistent, "extract_language")
@@ -401,8 +401,8 @@ screen extract_dialogue:
                         allow interface.TRANSLATE_LETTERS
 
 
-    textbutton _("Cancel") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Jump("front_page") style "l_left_button"
-    textbutton _("Continue") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Jump("start_extract_dialogue") style "l_right_button"
+    textbutton _("Cancel") text_outlines TEXT_OUTLINES action Jump("front_page") style "l_left_button"
+    textbutton _("Continue") text_outlines TEXT_OUTLINES action Jump("start_extract_dialogue") style "l_right_button"
 
 label extract_dialogue:
 

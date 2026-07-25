@@ -311,7 +311,7 @@ screen android_process(interface):
     default ft = FileTail(interface.filename)
 
     text "[ft.text!q]":
-        outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+        outlines TEXT_OUTLINES
         size 14
         color TEXT
         font gui.LIGHT_FONT
@@ -335,7 +335,7 @@ screen android:
 
             has vbox
 
-            label _("Android: [project.current.display_name!q]") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+            label _("Android: [project.current.display_name!q]") text_outlines TEXT_OUTLINES
 
             add HALF_SPACER
 
@@ -355,7 +355,7 @@ screen android:
                         style "l_indent"
                         has vbox
 
-                        text _("Emulation:") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                        text _("Emulation:") outlines TEXT_OUTLINES
 
                         add HALF_SPACER
 
@@ -365,17 +365,17 @@ screen android:
                                 spacing 15
 
                             textbutton _("Phone"):
-                                text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                text_outlines TEXT_OUTLINES
                                 action LaunchEmulator("touch", "small phone touch android mobile")
                                 hovered tt.Action(PHONE_TEXT)
 
                             textbutton _("Tablet"):
-                                text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                text_outlines TEXT_OUTLINES
                                 action LaunchEmulator("touch", "medium tablet touch android mobile")
                                 hovered tt.Action(TABLET_TEXT)
 
                             textbutton _("Television"):
-                                text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                text_outlines TEXT_OUTLINES
                                 action LaunchEmulator("tv", "small tv android mobile")
                                 hovered tt.Action(OUYA_TEXT)
 
@@ -387,7 +387,7 @@ screen android:
                         style "l_indent"
                         has vbox
 
-                        text _("Build:") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                        text _("Build:") outlines TEXT_OUTLINES
 
                         add HALF_SPACER
 
@@ -395,30 +395,30 @@ screen android:
 
                             has vbox
                             textbutton _("Install SDK"):
-                                text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                text_outlines TEXT_OUTLINES
                                 action AndroidIfState(state, ANDROID_NO_SDK, Jump("android_installsdk"))
                                 hovered tt.Action(INSTALL_SDK_TEXT)
 
                             textbutton _("Generate Keys"):
-                                text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                text_outlines TEXT_OUTLINES
                                 action AndroidIfState(state, ANDROID_NO_KEY, Jump("android_keys"))
                                 hovered tt.Action(GENERATE_KEYS_TEXT)
 
                             textbutton _("Configure"):
-                                text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                text_outlines TEXT_OUTLINES
                                 action AndroidIfState(state, ANDROID_NO_KEY, Jump("android_configure"))
                                 hovered tt.Action(CONFIGURE_TEXT)
 
                             add SPACER
 
                             textbutton _("Play Bundle"):
-                                text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                text_outlines TEXT_OUTLINES
                                 action SetField(persistent, "android_bundle", True)
                                 hovered tt.Action(PLAY_BUNDLE_TEXT)
                                 style "l_checkbox"
 
                             textbutton _("Universal APK"):
-                                text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                text_outlines TEXT_OUTLINES
                                 action SetField(persistent, "android_bundle", False)
                                 hovered tt.Action(UNIVERSAL_APK_TEXT)
                                 style "l_checkbox"
@@ -426,23 +426,23 @@ screen android:
                             add SPACER
 
                             textbutton _("Build Package"):
-                                text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                text_outlines TEXT_OUTLINES
                                 action AndroidIfState(state, ANDROID_OK, AndroidBuild("android_build"))
                                 hovered tt.Action(BUILD_TEXT)
 
                             textbutton _("Build & Install"):
-                                text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                text_outlines TEXT_OUTLINES
                                 action AndroidIfState(state, ANDROID_OK, AndroidBuild("android_build_and_install"))
                                 hovered tt.Action(BUILD_AND_INSTALL_TEXT)
 
                             textbutton _("Build, Install & Launch"):
-                                text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                text_outlines TEXT_OUTLINES
                                 action AndroidIfState(state, ANDROID_OK, AndroidBuild("android_build_install_and_launch"))
                                 hovered tt.Action(BUILD_INSTALL_AND_LAUNCH_TEXT)
 
                             add SPACER
 
-                            textbutton _("Force Recompile") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action DataToggle("force_recompile") style "l_checkbox"
+                            textbutton _("Force Recompile") text_outlines TEXT_OUTLINES action DataToggle("force_recompile") style "l_checkbox"
 
 
                 # Right side.
@@ -459,7 +459,7 @@ screen android:
                         style "l_indent"
                         has vbox
 
-                        text _("Other:") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                        text _("Other:") outlines TEXT_OUTLINES
 
                         add HALF_SPACER
 
@@ -468,32 +468,32 @@ screen android:
                             has vbox
 
                             textbutton _("Logcat"):
-                                text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                text_outlines TEXT_OUTLINES
                                 action AndroidIfState(state, ANDROID_NO_KEY, Jump("logcat"))
                                 hovered tt.Action(LOGCAT_TEXT)
 
                             textbutton _("List Devices"):
-                                text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                text_outlines TEXT_OUTLINES
                                 action AndroidIfState(state, ANDROID_NO_KEY, Jump("android_list_devices"))
                                 hovered tt.Action(LIST_DEVICES_TEXT)
 
                             textbutton _("Wi-Fi Debugging Pair"):
-                                text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                text_outlines TEXT_OUTLINES
                                 action AndroidIfState(state, ANDROID_NO_KEY, Jump("android_pair"))
                                 hovered tt.Action(PAIR_TEXT)
 
                             textbutton _("Wi-Fi Debugging Connect"):
-                                text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                text_outlines TEXT_OUTLINES
                                 action AndroidIfState(state, ANDROID_NO_KEY, Jump("android_connect"))
                                 hovered tt.Action(CONNECT_TEXT)
 
                             textbutton _("Wi-Fi Debugging Disconnect"):
-                                text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                text_outlines TEXT_OUTLINES
                                 action AndroidIfState(state, ANDROID_NO_KEY, Jump("android_disconnect"))
                                 hovered tt.Action(DISCONNECT_TEXT)
 
                             textbutton _("Clean"):
-                                text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                text_outlines TEXT_OUTLINES
                                 action AndroidIfState(state, ANDROID_NO_KEY, Jump("android_clean"))
                                 hovered tt.Action(CLEAN_TEXT)
 
@@ -507,12 +507,12 @@ screen android:
                         add SPACER
 
                         if tt.value:
-                            text tt.value outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                            text tt.value outlines TEXT_OUTLINES
                         else:
-                            text AndroidStateText(state) outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                            text AndroidStateText(state) outlines TEXT_OUTLINES
 
 
-    textbutton _("Return") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Jump("front_page") style "l_left_button"
+    textbutton _("Return") text_outlines TEXT_OUTLINES action Jump("front_page") style "l_left_button"
 
 
 label android:

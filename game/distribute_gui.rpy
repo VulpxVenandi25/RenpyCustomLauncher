@@ -133,13 +133,13 @@ screen distribute_name:
         style "l_indent"
         has vbox
 
-        text title outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+        text title outlines TEXT_OUTLINES
 
         add HALF_SPACER
 
         frame:
             style "l_indent"
-            text "[value!q]" outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+            text "[value!q]" outlines TEXT_OUTLINES
 
     add SPACER
 
@@ -154,7 +154,7 @@ screen build_distributions:
 
             has vbox
 
-            label _("Build Distributions: [project.current.display_name!q]") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+            label _("Build Distributions: [project.current.display_name!q]") text_outlines TEXT_OUTLINES
 
             add HALF_SPACER
 
@@ -182,7 +182,7 @@ screen build_distributions:
                         style "l_indent"
                         has vbox
 
-                        text _("Actions:") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                        text _("Actions:") outlines TEXT_OUTLINES
 
                         add HALF_SPACER
 
@@ -190,14 +190,14 @@ screen build_distributions:
 
                             has vbox
 
-                            textbutton _("Edit options.rpy") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action editor.Edit("game/options.rpy", check=True)
-                            textbutton _("Add from clauses to calls, once") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Jump("add_from")
-                            textbutton _("Update old-game") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Jump("start_update_old_game")
-                            textbutton _("Refresh") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Jump("build_distributions")
+                            textbutton _("Edit options.rpy") text_outlines TEXT_OUTLINES action editor.Edit("game/options.rpy", check=True)
+                            textbutton _("Add from clauses to calls, once") text_outlines TEXT_OUTLINES action Jump("add_from")
+                            textbutton _("Update old-game") text_outlines TEXT_OUTLINES action Jump("start_update_old_game")
+                            textbutton _("Refresh") text_outlines TEXT_OUTLINES action Jump("build_distributions")
 
                             add HALF_SPACER
 
-                            textbutton _("Upload to itch.io") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Jump("itch")
+                            textbutton _("Upload to itch.io") text_outlines TEXT_OUTLINES action Jump("itch")
 
                 # Right side.
                 frame:
@@ -213,7 +213,7 @@ screen build_distributions:
                         style "l_indent"
                         has vbox
 
-                        text _("Build Packages:") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                        text _("Build Packages:") outlines TEXT_OUTLINES
 
                         add HALF_SPACER
 
@@ -226,7 +226,7 @@ screen build_distributions:
                                     action PackageToggle(pkg["name"]) style "l_checkbox"
                                     hbox:
                                         spacing 3
-                                        text "[description!q]" outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                        text "[description!q]" outlines TEXT_OUTLINES
                                         if pkg["dlc"]:
                                             text _("(DLC)")
 
@@ -238,19 +238,19 @@ screen build_distributions:
                         style "l_indent"
                         has vbox
 
-                        text _("Options:") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                        text _("Options:") outlines TEXT_OUTLINES
 
                         add HALF_SPACER
 
                         if project.current.dump["build"]["include_update"]:
-                            textbutton _("Build Updates") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action DataToggle("build_update") style "l_checkbox"
+                            textbutton _("Build Updates") text_outlines TEXT_OUTLINES action DataToggle("build_update") style "l_checkbox"
 
-                        textbutton _("Add from clauses to calls") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action DataToggle("add_from") style "l_checkbox"
-                        textbutton _("Force Recompile") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action DataToggle("force_recompile") style "l_checkbox"
+                        textbutton _("Add from clauses to calls") text_outlines TEXT_OUTLINES action DataToggle("add_from") style "l_checkbox"
+                        textbutton _("Force Recompile") text_outlines TEXT_OUTLINES action DataToggle("force_recompile") style "l_checkbox"
 
 
-    textbutton _("Return") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Jump("front_page") style "l_left_button"
-    textbutton _("Build") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))] action Jump("start_distribute") style "l_right_button"
+    textbutton _("Return") text_outlines TEXT_OUTLINES action Jump("front_page") style "l_left_button"
+    textbutton _("Build") text_outlines TEXT_OUTLINES action Jump("start_distribute") style "l_right_button"
 
 label add_from_common:
     python:

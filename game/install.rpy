@@ -114,14 +114,14 @@ screen install_preferences():
         style "l_indent"
         has vbox
 
-        text _("This screen allows you to install libraries that can't be distributed with Ren'Py. Some of these libraries may require you to agree to a third-party license before being used or distributed.") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+        text _("This screen allows you to install libraries that can't be distributed with Ren'Py. Some of these libraries may require you to agree to a third-party license before being used or distributed.") outlines TEXT_OUTLINES
 
     add SPACER
 
     if not achievement.has_steam:
 
         textbutton _("Install Steam Support"):
-            text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+            text_outlines TEXT_OUTLINES
             action Jump("install_steam")
 
         add HALF_SPACER
@@ -130,11 +130,11 @@ screen install_preferences():
             style "l_indent"
             has vbox
 
-            text _("Before installing Steam support, please make sure you are a {a=https://partner.steamgames.com/}Steam partner{/a}.") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+            text _("Before installing Steam support, please make sure you are a {a=https://partner.steamgames.com/}Steam partner{/a}.") outlines TEXT_OUTLINES
 
     else:
 
-        textbutton _("Install Steam Support") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+        textbutton _("Install Steam Support") text_outlines TEXT_OUTLINES
 
         add HALF_SPACER
 
@@ -142,18 +142,18 @@ screen install_preferences():
             style "l_indent"
             has vbox
 
-            text _("Steam support has already been installed.") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+            text _("Steam support has already been installed.") outlines TEXT_OUTLINES
 
     add SPACER
 
     textbutton _("Install Live2D Cubism SDK for Native"):
-        text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+        text_outlines TEXT_OUTLINES
         action Jump("prompt_live2d")
 
     add HALF_SPACER
 
     textbutton _("Install Live2D Cubism SDK for Web"):
-        text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+        text_outlines TEXT_OUTLINES
         action Jump("prompt_live2d_web")
 
 screen install_live2d(web=False):
@@ -166,7 +166,7 @@ screen install_live2d(web=False):
 
             has vbox
 
-            label _("Install Libraries") text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+            label _("Install Libraries") text_outlines TEXT_OUTLINES
 
             add HALF_SPACER
 
@@ -185,13 +185,13 @@ screen install_live2d(web=False):
 
                         if web:
                             textbutton _("Install Live2D Cubism SDK for Web"):
-                                text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                text_outlines TEXT_OUTLINES
                                 action Jump("install_live2d_web")
 
                         else:
 
                             textbutton _("Install Live2D Cubism SDK for Native"):
-                                text_outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                text_outlines TEXT_OUTLINES
                                 action Jump("install_live2d")
 
                         add HALF_SPACER
@@ -201,9 +201,9 @@ screen install_live2d(web=False):
                             has vbox
 
                             if web:
-                                text _("The {a=https://www.live2d.com/en/sdk/download/web/}Cubism SDK for Web{/a} adds support for displaying Live2D models. Place CubismSdkForWeb-{i}version{/i}.zip in the Ren'Py SDK directory, and then click Install. Distributing a game with Live2D requires you to accept a license from Live2D, Inc.") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                text _("The {a=https://www.live2d.com/en/sdk/download/web/}Cubism SDK for Web{/a} adds support for displaying Live2D models. Place CubismSdkForWeb-{i}version{/i}.zip in the Ren'Py SDK directory, and then click Install. Distributing a game with Live2D requires you to accept a license from Live2D, Inc.") outlines TEXT_OUTLINES
                             else:
-                                text _("The {a=https://www.live2d.com/en/sdk/download/native/}Cubism SDK for Native{/a} adds support for displaying Live2D models. Place CubismSdkForNative-{i}version{/i}.zip in the Ren'Py SDK directory, and then click Install. Distributing a game with Live2D requires you to accept a license from Live2D, Inc.") outlines [(absolute(1), "#000000", absolute(1), absolute(1))]
+                                text _("The {a=https://www.live2d.com/en/sdk/download/native/}Cubism SDK for Native{/a} adds support for displaying Live2D models. Place CubismSdkForNative-{i}version{/i}.zip in the Ren'Py SDK directory, and then click Install. Distributing a game with Live2D requires you to accept a license from Live2D, Inc.") outlines TEXT_OUTLINES
 
                             add SPACER
 
