@@ -1,0 +1,26 @@
+{
+  "id": "ruber",
+  "name": "Ruber Theme",
+  "properties": {
+    "text": "#d4ccc9",
+    "idle": "#7a715d",
+    "hover": "#9c8c54",
+    "disable": "#534954",
+    "reverse_idle": "#43251a",
+    "reverse_hover": "#59261c",
+    "reverse_text": "#d4ccc9",
+    "scrollbar_idle": "#3c3936",
+    "scrollbar_hover": "#6d9870",
+    "pattern": "images/pattern.png",
+    "background": "images/themes/ruber/ruber.png",
+    "projects_window": "#220f0fb0",
+    "info_window": "#342b35",
+    "error_color": "#4c161a",
+    "info_color": "#73cda8",
+    "interaction_color": "#6e5a5d",
+    "question_color": "#9c8c54",
+    "input_color": "#a7a6a1",
+    "outline_shadow": "#000000",
+    "window": "#220f0fb0"
+  }
+}

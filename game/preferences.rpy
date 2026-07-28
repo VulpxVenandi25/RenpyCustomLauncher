@@ -294,7 +294,11 @@ screen preferences():
                             for tid in THEME_ORDER:
                                 $ tname = THEME_NAMES.get(tid, tid)
                                 textbutton tname id "pref_theme_[tid]_btn" text_outlines TEXT_OUTLINES style "l_checkbox" action [SetField(persistent, "theme", tid if tid != "default" else None), RestartAtPreferences()]
-                            
+
+                            add SPACER
+
+                            textbutton _("Manage Custom Themes") text_outlines TEXT_OUTLINES style "l_nonbox" action Jump("theme_manager")
+
                             add SPACER
 
                             add SEPARATOR2

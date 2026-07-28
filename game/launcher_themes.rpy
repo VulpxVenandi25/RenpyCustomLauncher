@@ -46,3 +46,17 @@ init -10 python:
         info_color="#ababab",
         input_color="#d86b45",
     )
+
+init -9 python:
+    import json, os
+    themes_dir = os.path.join(config.gamedir, "themes")
+    if os.path.isdir(themes_dir):
+        for fn in sorted(os.listdir(themes_dir)):
+            if fn.endswith(".json"):
+                try:
+                    with open(os.path.join(themes_dir, fn), "r") as f:
+                        data = json.load(f)
+                    clean = {k: v for k, v in data.get("properties", {}).items() if v != ""}
+                    register_theme(data["id"], data["name"], **clean)
+                except Exception:
+                    pass

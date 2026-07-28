@@ -20,6 +20,8 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 # Defaults for custom theme properties.
+default persistent.custom_theme_values = {}
+
 init -99 python:
     # The color of non-interactive text.
     custom_text = "#545454"
@@ -65,6 +67,31 @@ init -99 python:
     # containing commands, preferences, and navigation info.
     custom_window = Frame(Fixed(Solid(custom_reverse_idle, xsize=4, xalign=0), Solid(custom_info_window, xsize=794, xalign=1.0), xsize=800, ysize=600), 0, 0, tile=True)
 
+    # Load custom theme from persistent values.
+    if persistent.custom_theme_values:
+        cv = persistent.custom_theme_values
+        custom_text = cv.get("text", custom_text)
+        custom_idle = cv.get("idle", custom_idle)
+        custom_hover = cv.get("hover", custom_hover)
+        custom_disable = cv.get("disable", custom_disable)
+        custom_reverse_idle = cv.get("reverse_idle", custom_reverse_idle)
+        reverse_hover = cv.get("reverse_hover", reverse_hover)
+        custom_reverse_text = cv.get("reverse_text", custom_reverse_text)
+        custom_scrollbar_idle = cv.get("scrollbar_idle", custom_scrollbar_idle)
+        custom_scrollbar_hover = cv.get("scrollbar_hover", custom_scrollbar_hover)
+        custom_pattern = cv.get("pattern", custom_pattern)
+        custom_background = cv.get("background", custom_background)
+        custom_info_window = cv.get("info_window", custom_info_window)
+        custom_error_color = cv.get("error_color", custom_error_color)
+        custom_info_color = cv.get("info_color", custom_info_color)
+        custom_interaction_color = cv.get("interaction_color", custom_interaction_color)
+        custom_question_color = cv.get("question_color", custom_question_color)
+        custom_input_color = cv.get("input_color", custom_input_color)
+        custom_outline_shadow = cv.get("outline_shadow", custom_outline_shadow)
+        if "projects_window" in cv and cv["projects_window"]:
+            custom_projects_window = Solid(cv["projects_window"])
+        if "window" in cv and cv["window"]:
+            custom_window = Solid(cv["window"])
 
 init -1:
 
