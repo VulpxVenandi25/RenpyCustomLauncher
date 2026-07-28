@@ -58,6 +58,9 @@ init -99 python:
     # The color of input text.
     custom_input_color = "#d86b45"
 
+    # The shadow color for text outlines.
+    custom_outline_shadow = "#000000"
+
     # A displayable used for the background of windows
     # containing commands, preferences, and navigation info.
     custom_window = Frame(Fixed(Solid(custom_reverse_idle, xsize=4, xalign=0), Solid(custom_info_window, xsize=794, xalign=1.0), xsize=800, ysize=600), 0, 0, tile=True)
@@ -78,11 +81,6 @@ init -1:
 init -1 python:
 
     config.defer_styles = True
-
-    if persistent.text_outlines:
-        TEXT_OUTLINES = [(absolute(1), "#000000", absolute(1), absolute(1))]
-    else:
-        TEXT_OUTLINES = []
 
     _cur_theme_id = persistent.theme
     _cur_theme = THEMES.get(_cur_theme_id) if _cur_theme_id else None
@@ -106,6 +104,7 @@ init -1 python:
         INTERACTION_COLOR = _cur_theme.get("interaction_color", "#d19753")
         QUESTION_COLOR = _cur_theme.get("question_color", "#d19753")
         INPUT_COLOR = _cur_theme.get("input_color", HOVER)
+        OUTLINE_SHADOW = _cur_theme.get("outline_shadow", "#000000")
         WINDOW = _cur_theme.get("window", Frame(
             Fixed(
                 Solid(REVERSE_IDLE, xsize=4, xalign=0),
@@ -132,6 +131,7 @@ init -1 python:
         INTERACTION_COLOR = custom_interaction_color
         QUESTION_COLOR = custom_question_color
         INPUT_COLOR = custom_input_color
+        OUTLINE_SHADOW = custom_outline_shadow
         WINDOW = custom_window
     else:
         TEXT = "#545454"
@@ -152,7 +152,13 @@ init -1 python:
         INTERACTION_COLOR = "#d19753"
         QUESTION_COLOR = "#d19753"
         INPUT_COLOR = "#d86b45"
+        OUTLINE_SHADOW = "#000000"
         WINDOW = Frame(Fixed(Solid(REVERSE_IDLE, xsize=4, xalign=0), Solid(INFO_WINDOW, xsize=794, xalign=1.0), xsize=800, ysize=600), 0, 0, tile=True)
+
+    if persistent.text_outlines:
+        TEXT_OUTLINES = [(absolute(1), OUTLINE_SHADOW, absolute(1), absolute(1))]
+    else:
+        TEXT_OUTLINES = []
 
     def folder_icon(color):
         return Transform("images/folder.svg", xysize=(25,25), matrixcolor=TintMatrix(color))
